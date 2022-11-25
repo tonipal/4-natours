@@ -1,3 +1,4 @@
+const { Query } = require('mongoose');
 const Tour = require('./../models/tourModel');
 
 exports.getAllTours = async (req, res) => {
@@ -20,7 +21,7 @@ exports.getAllTours = async (req, res) => {
             const sortBy = req.query.sort.split(',').join(' ');
             query = query.sort(sortBy)
         } else {
-            query = query.sort('-createdAt');
+            query = query.sort('_id');
         }
 
         // 3) Field limiting
@@ -35,6 +36,8 @@ exports.getAllTours = async (req, res) => {
         const page = req.query.page * 1 || 1;
         const limit = req.query.limit * 1 || 100;
         const skip = (page -1) * limit;
+
+        console.log(skip, limit);
 
         query = query.skip(skip).limit(limit);
 
