@@ -1,2 +1,4 @@
 # 4-natours
-Express, Node.js & MongoDB learning project 
+Node.js, Express & MongoDB learning project
+
+Create config.env file based on the example with working personal database credentials and run with command 'npm start'.
